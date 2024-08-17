@@ -7,6 +7,7 @@ public class Placeable : MonoBehaviour
     private new Camera camera;
     private Color startingColor;
     private bool tracking = false;
+    private int cost = 0;
 
     public GameObject blueprintHandler;
 
@@ -45,6 +46,8 @@ public class Placeable : MonoBehaviour
             else if(Input.GetKeyDown(KeyCode.Escape))
             {
                 Destroy(gameObject);
+                blueprintHandler.GetComponent<BlueprintHandler>().allowedToOpen = true;
+                blueprintHandler.GetComponent<BlueprintHandler>().AddMaterials(cost);
             }
 
         }
@@ -78,5 +81,22 @@ public class Placeable : MonoBehaviour
     {
         this.camera = camera;
         tracking = true;
+    }
+
+    public void Scale(int size, int cost)
+    {
+        switch(size)
+        {
+            case 0:
+                gameObject.transform.localScale = new Vector3(0.25f, 0.25f, 1);
+                break;
+            case 1:
+                gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+                break;
+            default:
+                break;
+        }
+
+        this.cost = cost;
     }
 }
