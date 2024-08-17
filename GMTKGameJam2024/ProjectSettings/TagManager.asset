@@ -8,6 +8,7 @@ TagManager:
   - WaterCooler
   - RawMaterials
   - Constructed
+  - GameManager
   layers:
   - Default
   - TransparentFX

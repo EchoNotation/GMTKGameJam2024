@@ -15,7 +15,7 @@ public class Placeable : MonoBehaviour
     void Start()
     {
         camera = GameObject.FindAnyObjectByType<Camera>();
-        blueprintHandler = GameObject.Find("GameManager");
+        blueprintHandler = GameObject.FindGameObjectWithTag("GameManager");
 
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().simulated = false;
@@ -62,7 +62,6 @@ public class Placeable : MonoBehaviour
         RaycastHit2D[] res = new RaycastHit2D[10];
         GetComponent<Collider2D>().Cast(new Vector2(0, 0), res, 0);
 
-        Debug.Log(res.Length);
         if(res[0].collider == null)
         {
             //Should be able to place

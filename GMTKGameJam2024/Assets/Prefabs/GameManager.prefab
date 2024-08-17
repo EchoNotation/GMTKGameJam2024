@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4001837286727257435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9055292062747966848}
+  - component: {fileID: 971138586253089223}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9055292062747966848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001837286727257435}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &971138586253089223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001837286727257435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8acfaed3b598e3b46b90704659c71c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  sizeButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  blueprintButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  blueprintDictionary:
+  - {fileID: -6386710296154651809, guid: df4bc8be9034f0e459838fb956402097, type: 3}
+  - {fileID: -6386710296154651809, guid: 17e5c08c52b80c442bc9acf5f5109a1c, type: 3}
+  - {fileID: -6386710296154651809, guid: 009f94b030d14b946a89eed6276d9845, type: 3}
+  - {fileID: -6386710296154651809, guid: b3d5f367afb720f4aaa4e7f6d4150913, type: 3}
+  - {fileID: -6386710296154651809, guid: c86a9979d48680b488a4efb71448f56d, type: 3}
+  materialsText: {fileID: 0}
+  allowedToOpen: 1
