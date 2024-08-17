@@ -8,10 +8,13 @@ public class Placeable : MonoBehaviour
     private Color startingColor;
     private bool tracking = false;
 
+    public GameObject blueprintHandler;
+
     // Start is called before the first frame update
     void Start()
     {
         camera = GameObject.FindAnyObjectByType<Camera>();
+        blueprintHandler = GameObject.Find("GameManager");
 
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().simulated = false;
@@ -63,6 +66,7 @@ public class Placeable : MonoBehaviour
             GetComponent<Rigidbody2D>().simulated = true;
             GetComponent<SpriteRenderer>().color = startingColor;
             tracking = false;
+            blueprintHandler.GetComponent<BlueprintHandler>().allowedToOpen = true;
         }
         else
         {

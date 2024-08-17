@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,6 +18,8 @@ public class BlueprintHandler : MonoBehaviour
     public GameObject[] sizeButtons = new GameObject[3];
     public Button[] blueprintButtons = new Button[5];
     public Blueprint[] blueprintDictionary = new Blueprint[totalBlueprints];
+
+    public bool allowedToOpen = true;
 
     void Start()
     {
@@ -45,11 +48,13 @@ public class BlueprintHandler : MonoBehaviour
 
     public void OpenBlueprint(int position)
     {
+        if(!allowedToOpen) return;
+
         if(position >= blueprints.Count) return;
         //Size changing magic
 
         GameObject temp = Instantiate(blueprints[position].prefab);
         temp.GetComponent<Placeable>().RecieveCamera(mainCam);
-       
+        allowedToOpen = false;
     }
 }
