@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Experimental.AI;
 
 public class Player : MonoBehaviour
 {

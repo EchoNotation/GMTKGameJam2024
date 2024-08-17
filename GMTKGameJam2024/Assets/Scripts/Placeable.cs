@@ -14,12 +14,14 @@ public class Placeable : MonoBehaviour
         camera = GameObject.FindAnyObjectByType<Camera>();
 
         GetComponent<Collider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().Sleep();
+        GetComponent<Rigidbody2D>().simulated = false;
 
         startingColor = GetComponent<SpriteRenderer>().color;
         Color tempColor = startingColor;
-        tempColor.a = 100;
+        tempColor.a = 0.25f;
         GetComponent<SpriteRenderer>().color = tempColor;
+
+        //Can appear behind the player or other game elements, sorting layer change?
     }
 
     // Update is called once per frame
@@ -35,21 +37,37 @@ public class Placeable : MonoBehaviour
 
             if(Input.GetMouseButtonDown(0))
             {
-                Place();
+                TryPlace();
             }
             else if(Input.GetKeyDown(KeyCode.Escape))
             {
                 Destroy(gameObject);
             }
+
         }
+        
     }
 
-    public void Place()
+    public void TryPlace()
     {
         GetComponent<Collider2D>().enabled = true;
-        GetComponent<Rigidbody2D>().WakeUp();
-        GetComponent<SpriteRenderer>().color = startingColor;
-        tracking = false;
+
+        //This is a crash contender later
+        RaycastHit2D[] res = new RaycastHit2D[10];
+        GetComponent<Collider2D>().Cast(new Vector2(0, 0), res, 0);
+
+        Debug.Log(res.Length);
+        if(res[0].collider == null)
+        {
+            //Should be able to place
+            GetComponent<Rigidbody2D>().simulated = true;
+            GetComponent<SpriteRenderer>().color = startingColor;
+            tracking = false;
+        }
+        else
+        {
+            GetComponent<Collider2D>().enabled = false;
+        }
     }
 
     public void RecieveCamera(Camera camera)
