@@ -1,7 +1,28 @@
+using System.Diagnostics;
+using UnityEditor;
+using UnityEditor.Experimental;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    public Sprite[] sprites = new Sprite[10];
+    
+    public enum AnimationState
+    {
+        STAND,
+        BLINK,
+        WALK1,
+        WALK2,
+        PRE_JUMP,
+        PRE_BLINK
+    }
+
+    public AnimationState animState;
+    bool facingLeft;
+    Stopwatch timer;
+    public long nextSwitch;
+
     Rigidbody2D rb;
     private Camera cam;
     bool grounded = false;
@@ -17,6 +38,11 @@ public class Player : MonoBehaviour
         cam = GameObject.Find("Camera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
         active = true;
+        animState = AnimationState.STAND;
+        facingLeft = false;
+        timer = new Stopwatch();
+        timer.Start();
+        nextSwitch = 0;
     }
 
     // Update is called once per frame
@@ -30,6 +56,9 @@ public class Player : MonoBehaviour
         }
 
         if(active) CheckInputs();
+
+        UpdateAnimationState();
+        UpdateSprite();
     }
 
     private void CheckInputs()
@@ -60,6 +89,127 @@ public class Player : MonoBehaviour
                 if(p != null) p.BreakDown();
             }
         }
+    }
+
+    private void UpdateAnimationState()
+    {
+        bool pressingLeft = Input.GetKey(KeyCode.A);
+        bool pressingRight = Input.GetKey(KeyCode.D);
+
+        if(pressingLeft) facingLeft = true;
+        else if(pressingRight) facingLeft = false;
+
+        switch(animState)
+        {
+            case AnimationState.STAND:
+                if(pressingLeft || pressingRight)
+                {
+                    //Start walking
+                    animState = AnimationState.WALK1;
+                    nextSwitch = 250;
+                    timer.Restart();
+                }
+                else
+                {
+                    animState = AnimationState.PRE_BLINK;
+                    nextSwitch = Random.Range(500, 2500);
+                    timer.Restart();
+                }
+                break;
+            case AnimationState.PRE_BLINK:
+                if(pressingLeft || pressingRight)
+                {
+                    //Start walking
+                    animState = AnimationState.WALK1;
+                    nextSwitch = 250;
+                    timer.Restart();
+                }
+                else if(timer.ElapsedMilliseconds > nextSwitch)
+                {
+                    animState = AnimationState.BLINK;
+                    nextSwitch = 100;
+                    timer.Restart();
+                }
+                break;
+            case AnimationState.BLINK:
+                if(pressingLeft || pressingRight)
+                {
+                    //Start walking
+                    animState = AnimationState.WALK1;
+                    nextSwitch = 250;
+                    timer.Restart();
+                }
+                else if(timer.ElapsedMilliseconds > nextSwitch)
+                {
+                    animState = AnimationState.STAND;
+                    nextSwitch = 0;
+                    timer.Restart();
+                }
+                break;
+            case AnimationState.WALK1:
+                if(pressingLeft || pressingRight)
+                {
+                    if(timer.ElapsedMilliseconds > nextSwitch)
+                    {
+                        animState = AnimationState.WALK2;
+                        nextSwitch = 250;
+                        timer.Restart();
+                    }
+                }
+                else
+                {
+                    animState = AnimationState.STAND;
+                    nextSwitch = 0;
+                    timer.Restart();
+                }
+                break;
+            case AnimationState.WALK2:
+                if(pressingLeft || pressingRight)
+                {
+                    if(timer.ElapsedMilliseconds > nextSwitch)
+                    {
+                        animState = AnimationState.WALK1;
+                        nextSwitch = 250;
+                        timer.Restart();
+                    }
+                }
+                else
+                {
+                    animState = AnimationState.STAND;
+                    nextSwitch = 0;
+                    timer.Restart();
+                }
+                break;
+
+        }
+
+    }
+
+    private void UpdateSprite()
+    {
+        int spriteIndex = 0;
+
+        switch(animState)
+        {
+            case AnimationState.STAND:
+            case AnimationState.PRE_BLINK:
+                spriteIndex = 0;
+                break;
+            case AnimationState.BLINK:
+                spriteIndex = 1;
+                break;
+            case AnimationState.WALK1:
+                spriteIndex = 2;
+                break;
+            case AnimationState.WALK2:
+                spriteIndex = 3;
+                break;
+            case AnimationState.PRE_JUMP:
+                spriteIndex = 4;
+                break;
+        }
+
+        GetComponent<SpriteRenderer>().sprite = sprites[facingLeft ? spriteIndex : spriteIndex + 5];
     }
 
     public void DisableActions()

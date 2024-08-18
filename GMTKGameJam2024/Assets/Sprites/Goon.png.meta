@@ -127,7 +127,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 14
+        y: 42
         width: 14
         height: 14
       alignment: 0
@@ -148,7 +148,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 14
-        y: 14
+        y: 42
         width: 14
         height: 14
       alignment: 0
@@ -168,8 +168,8 @@ TextureImporter:
       name: Goon_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 28
+        y: 42
         width: 14
         height: 14
       alignment: 0
@@ -189,8 +189,8 @@ TextureImporter:
       name: Goon_3
       rect:
         serializedVersion: 2
-        x: 14
-        y: 0
+        x: 0
+        y: 28
         width: 14
         height: 14
       alignment: 0
@@ -202,6 +202,132 @@ TextureImporter:
       bones: []
       spriteID: 2860021cb30f29b4fa8d6873ac1f5671
       internalID: -784920880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goon_4
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 28
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d561e06f77ab8d2489433d5e3fee5e07
+      internalID: -1540768667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goon_5
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 28
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 456752b19bc368f4a829e730b138ea56
+      internalID: 168597036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goon_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 14
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2b6ea79fda60ab43806dcacedba7384
+      internalID: 1301622732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goon_7
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 14
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6b706d441e758a40a13d695405fad68
+      internalID: 721773250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goon_8
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 14
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61643daece99f494da0bc55bf6802016
+      internalID: -1215038892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goon_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3fd68ea00f540a41a00ae0294bf0044
+      internalID: -602979382
       vertices: []
       indices: 
       edges: []
@@ -221,6 +347,12 @@ TextureImporter:
       Goon_1: 2054123852
       Goon_2: 1261014462
       Goon_3: -784920880
+      Goon_4: -1540768667
+      Goon_5: 168597036
+      Goon_6: 1301622732
+      Goon_7: 721773250
+      Goon_8: -1215038892
+      Goon_9: -602979382
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

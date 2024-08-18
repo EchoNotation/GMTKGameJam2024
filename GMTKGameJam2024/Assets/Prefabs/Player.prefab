@@ -99,6 +99,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 940f93c3d66bb73488e9753831577d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -784920880, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  - {fileID: 1301622732, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  - {fileID: 168597036, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  - {fileID: -1540768667, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  - {fileID: -602979382, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  - {fileID: 721773250, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  - {fileID: 1261014462, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  - {fileID: 2054123852, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  - {fileID: -918192248, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  - {fileID: -1215038892, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
   walkForce: 1.5
   jumpForce: 25
   jumpDistance: 0.05
