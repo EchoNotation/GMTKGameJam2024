@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8073141738117125433}
   - component: {fileID: 8883693960038853542}
   - component: {fileID: 85250902472106559}
+  - component: {fileID: -2533830953817358544}
   m_Layer: 0
   m_Name: Forklift
   m_TagString: Constructed
@@ -205,3 +206,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blueprintHandler: {fileID: 0}
+--- !u!114 &-2533830953817358544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4092172844842025370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e947d1942ff65bc439c4407584f9b108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

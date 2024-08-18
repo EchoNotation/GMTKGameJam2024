@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7660011246684963832}
   - component: {fileID: 7640419484849445838}
   - component: {fileID: 8446701986413990824}
+  - component: {fileID: -5592732025923882845}
   m_Layer: 0
   m_Name: Stepladder
   m_TagString: Constructed
@@ -208,3 +209,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blueprintHandler: {fileID: 0}
+--- !u!114 &-5592732025923882845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2888178989952792008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e947d1942ff65bc439c4407584f9b108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

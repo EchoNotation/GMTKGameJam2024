@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1051557539721461729}
   - component: {fileID: 35164778362434180}
   - component: {fileID: 5463878072069628548}
+  - component: {fileID: 533352885545592652}
   m_Layer: 0
   m_Name: Headphones
   m_TagString: Constructed
@@ -197,3 +198,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blueprintHandler: {fileID: 0}
+--- !u!114 &533352885545592652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387187617839340352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e947d1942ff65bc439c4407584f9b108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

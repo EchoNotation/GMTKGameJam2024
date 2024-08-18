@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3070014422463334721}
   - component: {fileID: 4947550450123482044}
   - component: {fileID: 7659722552095359194}
+  - component: {fileID: -4266332604182405811}
   - component: {fileID: 6829353681846553590}
   - component: {fileID: -3480901071182933437}
   m_Layer: 2
@@ -116,6 +117,19 @@ MonoBehaviour:
   jumpForce: 15
   jumpDistance: 0.05
   maxSpeed: 6
+  lethalForce: 35
+--- !u!114 &-4266332604182405811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985171366187449486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e947d1942ff65bc439c4407584f9b108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &6829353681846553590
 BoxCollider2D:
   m_ObjectHideFlags: 0

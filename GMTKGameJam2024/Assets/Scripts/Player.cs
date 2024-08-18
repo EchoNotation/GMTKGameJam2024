@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Net.NetworkInformation;
 using UnityEditor;
 using UnityEditor.Experimental;
 using UnityEngine;
@@ -57,8 +58,6 @@ public class Player : MonoBehaviour
             if(hit.collider != null)
             {
                 float angle = Mathf.Rad2Deg * Mathf.Asin(Vector2.Dot(Vector2.up, hit.normal));
-                UnityEngine.Debug.Log(angle);
-
                 if(angle > 45 && angle < 135) grounded = true;
             } 
             else grounded = false;
@@ -248,5 +247,27 @@ public class Player : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("GameManager").GetComponent<CameraController>().PlayerDied();
         Destroy(gameObject);
+    }
+
+    private float lethalForce = 20f;
+    private float irrelevantSpeedThreshold = 2f;
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.CompareTag("Constructed"))
+        {
+            Rigidbody2D incoming = collision.collider.GetComponent<Rigidbody2D>();
+            Vector2 incomingVel = collision.collider.GetComponent<PhysicsHandler>().GetAverageVelocity();
+            Vector2 playerVel = GetComponent<PhysicsHandler>().GetAverageVelocity();
+
+            if((incomingVel - playerVel).magnitude < irrelevantSpeedThreshold) return;
+
+
+            Vector2 resultantVel = (playerVel / 4) - incomingVel;
+            float force = incoming.mass * resultantVel.magnitude;
+
+            UnityEngine.Debug.Log($"mass {incoming.mass} vel {resultantVel.magnitude} force {force}");
+            if(Mathf.Abs(force) >= lethalForce) Die();
+        }
     }
 }
