@@ -26,7 +26,9 @@ public class Checkpoint : MonoBehaviour
             if(activated) return;
 
             activated = true;
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<CameraController>().HitCheckpoint(minCameraY);
+            GameObject gm = GameObject.FindGameObjectWithTag("GameManager");
+            gm.GetComponent<CameraController>().HitCheckpoint(minCameraY);
+            gm.GetComponent<RespawnController>().SetActiveCheckpoint(gameObject);
         }
     }
 }

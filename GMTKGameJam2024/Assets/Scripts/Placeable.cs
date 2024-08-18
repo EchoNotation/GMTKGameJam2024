@@ -73,6 +73,8 @@ public class Placeable : MonoBehaviour
             GetComponent<SpriteRenderer>().color = startingColor;
             tracking = false;
             blueprintHandler.GetComponent<BlueprintHandler>().allowedToOpen = true;
+            blueprintHandler.GetComponent<BlueprintHandler>().BuiltObject(gameObject);
+
         }
         else
         {

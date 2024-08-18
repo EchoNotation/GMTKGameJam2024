@@ -16,6 +16,8 @@ public class BlueprintHandler : MonoBehaviour
     private List<Blueprint> blueprints;
     private int materialsCount = 50;
 
+    private List<GameObject> objectsBuilt;
+
     public static int totalBlueprints = 5;
 
     public Camera mainCam;
@@ -28,6 +30,7 @@ public class BlueprintHandler : MonoBehaviour
 
     void Start()
     {
+        objectsBuilt = new List<GameObject>();
         blueprints = new List<Blueprint>();
 
         for(int i = 0; i < totalBlueprints; i++)
@@ -99,5 +102,15 @@ public class BlueprintHandler : MonoBehaviour
     private void UpdateMaterialsCount()
     {
         materialsText.text = $"x{materialsCount}";
+    }
+
+    public void BuiltObject(GameObject obj)
+    {
+        objectsBuilt.Add(obj);
+    }
+
+    public GameObject[] GetBuiltObjects()
+    {
+        return objectsBuilt.ToArray();
     }
 }

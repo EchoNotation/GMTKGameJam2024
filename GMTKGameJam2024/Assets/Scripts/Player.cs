@@ -57,4 +57,10 @@ public class Player : MonoBehaviour
     {
         active = true;
     }
+
+    public void Die()
+    {
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<CameraController>().PlayerDied();
+        Destroy(gameObject);
+    }
 }

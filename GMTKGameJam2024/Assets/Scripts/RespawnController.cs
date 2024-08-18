@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RespawnController : MonoBehaviour
 {
+    public GameObject playerPrefab;
     private GameObject activeCheckpoint = null;
     private int respawnMaterialCount = 30;
 
@@ -24,16 +25,27 @@ public class RespawnController : MonoBehaviour
         activeCheckpoint = checkpoint;
     }
 
-    public void Respawn()
+    public void Spawn()
     {
+        Vector3 spawnLocation;
+
         if(activeCheckpoint == null) {
-            Debug.Log("Failed to respawn due to lack of checkpoint");
-            return;
+            spawnLocation = new Vector3(-3, 0, 0);
+        }
+        else
+        {
+            spawnLocation = activeCheckpoint.transform.position + new Vector3(0, 0.1f, 0);
         }
 
-        Vector3 spawnLocation = activeCheckpoint.transform.position;
-        //Instantiate()
+        GameObject player = Instantiate(playerPrefab, spawnLocation, Quaternion.identity);
+
+        GameObject[] builtObjs = GetComponent<BlueprintHandler>().GetBuiltObjects();
+        for(int i = 0; i < builtObjs.Length; i++)
+        {
+            Destroy(builtObjs[i]);
+        }
 
         GetComponent<BlueprintHandler>().SetMaterials(respawnMaterialCount);
+        GetComponent<CameraController>().player = player;
     }
 }

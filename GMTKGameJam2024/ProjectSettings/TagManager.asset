@@ -9,6 +9,7 @@ TagManager:
   - RawMaterials
   - Constructed
   - GameManager
+  - DeathEdge
   layers:
   - Default
   - TransparentFX
