@@ -14,7 +14,7 @@ public class BlueprintHandler : MonoBehaviour
     // Start is called before the first frame update
     private int currentSize = 0;
     private List<Blueprint> blueprints;
-    private int materialsCount = 30;
+    private int materialsCount = 50;
 
     public static int totalBlueprints = 5;
 
@@ -82,6 +82,12 @@ public class BlueprintHandler : MonoBehaviour
         materialsCount -= costs[currentSize];
         UpdateMaterialsCount();
         allowedToOpen = false;
+    }
+
+    public void SetMaterials(int amount)
+    {
+        materialsCount = amount;
+        UpdateMaterialsCount();
     }
 
     public void AddMaterials(int amount)

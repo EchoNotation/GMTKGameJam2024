@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
     bool grounded = false;
+    bool active;
     public float walkForce = 1.5f;
     public float jumpForce = 25f;
     public float jumpDistance = 0.55f;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        active = true;
     }
 
     // Update is called once per frame
@@ -24,6 +26,11 @@ public class Player : MonoBehaviour
             if(hit.collider != null && hit.distance < jumpDistance) grounded = true;
         }
 
+        if(active) CheckInputs();
+    }
+
+    private void CheckInputs()
+    {
         if(Input.GetKey(KeyCode.A) && rb.velocity.x > -maxSpeed)
         {
             rb.AddForce(new Vector2(-walkForce, 0));
@@ -39,5 +46,15 @@ public class Player : MonoBehaviour
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             grounded = false;
         }
+    }
+
+    public void DisableActions()
+    {
+        active = false;
+    }
+
+    public void EnableActions()
+    {
+        active = true;
     }
 }

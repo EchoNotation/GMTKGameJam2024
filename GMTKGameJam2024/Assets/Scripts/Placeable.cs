@@ -43,7 +43,11 @@ public class Placeable : MonoBehaviour
             {
                 TryPlace();
             }
-            else if(Input.GetKeyDown(KeyCode.Escape))
+
+            float currentAngle = transform.rotation.eulerAngles.z;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentAngle + (22.5f * Input.mouseScrollDelta.y)));
+
+            if(Input.GetKeyDown(KeyCode.Escape))
             {
                 Destroy(gameObject);
                 blueprintHandler.GetComponent<BlueprintHandler>().allowedToOpen = true;
