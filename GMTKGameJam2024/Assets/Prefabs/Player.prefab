@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3070014422463334721}
   - component: {fileID: 4947550450123482044}
   - component: {fileID: 7659722552095359194}
-  - component: {fileID: 5888894131290499617}
+  - component: {fileID: 6829353681846553590}
   - component: {fileID: -3480901071182933437}
   m_Layer: 2
   m_Name: Player
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 99
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 2054123852, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,12 +110,14 @@ MonoBehaviour:
   - {fileID: 2054123852, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
   - {fileID: -918192248, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
   - {fileID: -1215038892, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  animState: 0
+  nextSwitch: 0
   walkForce: 1.5
-  jumpForce: 25
+  jumpForce: 15
   jumpDistance: 0.05
   maxSpeed: 6
---- !u!58 &5888894131290499617
-CircleCollider2D:
+--- !u!61 &6829353681846553590
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,8 +149,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.875, y: 0.875}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.5, y: 0.875}
+  m_EdgeRadius: 0
 --- !u!50 &-3480901071182933437
 Rigidbody2D:
   serializedVersion: 4

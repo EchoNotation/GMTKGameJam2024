@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     private Camera cam;
     bool grounded = false;
+    Vector2 box;
     bool active;
     public float walkForce = 1.5f;
     public float jumpForce = 25f;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
         timer = new Stopwatch();
         timer.Start();
         nextSwitch = 0;
+        box = GetComponent<BoxCollider2D>().size;
     }
 
     // Update is called once per frame
@@ -50,8 +52,15 @@ public class Player : MonoBehaviour
     {
         if(rb.velocity.y <= 0)
         {
-            RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.5f, Vector2.down);
-            if(hit.collider != null && hit.distance < jumpDistance) grounded = true;
+            RaycastHit2D hit = Physics2D.BoxCast(transform.position, box, 0, Vector2.down, 0.05f);
+
+            if(hit.collider != null)
+            {
+                float angle = Mathf.Rad2Deg * Mathf.Asin(Vector2.Dot(Vector2.up, hit.normal));
+                UnityEngine.Debug.Log(angle);
+
+                if(angle > 45 && angle < 135) grounded = true;
+            } 
             else grounded = false;
         }
 
@@ -59,6 +68,12 @@ public class Player : MonoBehaviour
 
         UpdateAnimationState();
         UpdateSprite();
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(new Vector3(transform.position.x, transform.position.y - 0.05f, 0), new Vector3(box.x, box.y, 0.1f));
     }
 
     private void CheckInputs()
@@ -99,6 +114,13 @@ public class Player : MonoBehaviour
         if(pressingLeft) facingLeft = true;
         else if(pressingRight) facingLeft = false;
 
+        if(!grounded)
+        {
+            animState = AnimationState.STAND;
+            nextSwitch = 0;
+            return;
+        }
+
         switch(animState)
         {
             case AnimationState.STAND:
@@ -106,7 +128,7 @@ public class Player : MonoBehaviour
                 {
                     //Start walking
                     animState = AnimationState.WALK1;
-                    nextSwitch = 250;
+                    nextSwitch = 125;
                     timer.Restart();
                 }
                 else
@@ -121,7 +143,7 @@ public class Player : MonoBehaviour
                 {
                     //Start walking
                     animState = AnimationState.WALK1;
-                    nextSwitch = 250;
+                    nextSwitch = 125;
                     timer.Restart();
                 }
                 else if(timer.ElapsedMilliseconds > nextSwitch)
@@ -136,7 +158,7 @@ public class Player : MonoBehaviour
                 {
                     //Start walking
                     animState = AnimationState.WALK1;
-                    nextSwitch = 250;
+                    nextSwitch = 125;
                     timer.Restart();
                 }
                 else if(timer.ElapsedMilliseconds > nextSwitch)
@@ -152,7 +174,7 @@ public class Player : MonoBehaviour
                     if(timer.ElapsedMilliseconds > nextSwitch)
                     {
                         animState = AnimationState.WALK2;
-                        nextSwitch = 250;
+                        nextSwitch = 125;
                         timer.Restart();
                     }
                 }
@@ -169,7 +191,7 @@ public class Player : MonoBehaviour
                     if(timer.ElapsedMilliseconds > nextSwitch)
                     {
                         animState = AnimationState.WALK1;
-                        nextSwitch = 250;
+                        nextSwitch = 125;
                         timer.Restart();
                     }
                 }
