@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     bool active;
     public float walkForce = 1.5f;
     public float jumpForce = 25f;
-    public float jumpDistance = 0.55f;
+    public float jumpDistance = 0.05f;
     public float maxSpeed = 6f;
 
     // Start is called before the first frame update
@@ -22,8 +22,9 @@ public class Player : MonoBehaviour
     {
         if(rb.velocity.y <= 0)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1);
+            RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.5f, Vector2.down);
             if(hit.collider != null && hit.distance < jumpDistance) grounded = true;
+            else grounded = false;
         }
 
         if(active) CheckInputs();

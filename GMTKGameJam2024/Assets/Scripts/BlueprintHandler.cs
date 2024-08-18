@@ -70,6 +70,7 @@ public class BlueprintHandler : MonoBehaviour
     }
 
     private int[] costs = { 1, 5, 10 };
+    private float[] masses = { 1, 2.5f, 5 };
 
     public void OpenBlueprint(int position)
     {
@@ -81,7 +82,7 @@ public class BlueprintHandler : MonoBehaviour
 
         GameObject temp = Instantiate(blueprints[position].prefab);
         temp.GetComponent<Placeable>().RecieveCamera(mainCam);
-        temp.GetComponent<Placeable>().Scale(currentSize, costs[currentSize]);
+        temp.GetComponent<Placeable>().Scale(currentSize, costs[currentSize], masses[currentSize]);
         materialsCount -= costs[currentSize];
         UpdateMaterialsCount();
         allowedToOpen = false;

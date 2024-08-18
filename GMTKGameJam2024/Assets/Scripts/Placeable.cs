@@ -88,7 +88,7 @@ public class Placeable : MonoBehaviour
         tracking = true;
     }
 
-    public void Scale(int size, int cost)
+    public void Scale(int size, int cost, float mass)
     {
         switch(size)
         {
@@ -103,5 +103,6 @@ public class Placeable : MonoBehaviour
         }
 
         this.cost = cost;
+        GetComponent<Rigidbody2D>().mass = mass;
     }
 }
