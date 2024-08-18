@@ -105,4 +105,11 @@ public class Placeable : MonoBehaviour
         this.cost = cost;
         GetComponent<Rigidbody2D>().mass = mass;
     }
+
+    public void BreakDown()
+    {
+        if(tracking) return;
+        blueprintHandler.GetComponent<BlueprintHandler>().AddMaterials(cost);
+        Destroy(gameObject);
+    }
 }

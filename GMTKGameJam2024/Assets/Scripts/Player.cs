@@ -3,6 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
+    private Camera cam;
     bool grounded = false;
     bool active;
     public float walkForce = 1.5f;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = GameObject.Find("Camera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
         active = true;
     }
@@ -46,6 +48,17 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             grounded = false;
+        }
+
+        if(Input.GetMouseButtonDown(1))
+        {
+            Vector3 mouseLocation = cam.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mouseLocation, new Vector2());
+            if(hit.collider != null)
+            {
+                Placeable p = hit.collider.gameObject.GetComponent<Placeable>();
+                if(p != null) p.BreakDown();
+            }
         }
     }
 
