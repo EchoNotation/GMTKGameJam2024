@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f54b8f9a888a74e8926bac2cb7eae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
   sprites:
   - {fileID: 21300000, guid: b6e90ac4f64bf404894c269a46b6c097, type: 3}
   - {fileID: 903852656, guid: 073a037cacb65374281dc2da95596ec2, type: 3}
@@ -232,7 +233,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &4985297158582495206
 Rigidbody2D:

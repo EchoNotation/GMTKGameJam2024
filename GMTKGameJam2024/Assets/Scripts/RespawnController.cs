@@ -32,7 +32,7 @@ public class RespawnController : MonoBehaviour
         Vector3 spawnLocation;
 
         if(activeCheckpoint == null) {
-            spawnLocation = new Vector3(-3, 0, 0);
+            spawnLocation = new Vector3(-5, 0, 0);
         }
         else
         {
