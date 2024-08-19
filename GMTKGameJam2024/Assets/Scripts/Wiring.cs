@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Wiring : MonoBehaviour
 {
+    public ButtonMechanic button;
     public Sprite[] sprites;
     private Stopwatch timer;
     private long nextSwitch;
@@ -21,7 +22,11 @@ public class Wiring : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer.ElapsedMilliseconds > nextSwitch)
+        if(button != null && button.IsActivated())
+        {
+            sr.sprite = sprites[0];
+        }
+        else if(timer.ElapsedMilliseconds > nextSwitch)
         {
             int chosen = Random.Range(0, 3);
             sr.sprite = sprites[chosen];
@@ -43,5 +48,11 @@ public class Wiring : MonoBehaviour
         }
     }
 
+    public bool IsActivated()
+    {
+        if(button != null && button.IsActivated()) return false;
+
+        return true;
+    }
 
 }
