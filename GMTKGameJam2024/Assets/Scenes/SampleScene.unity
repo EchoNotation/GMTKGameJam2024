@@ -3875,9 +3875,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2444606038446993817, guid: bc17f1a12448d8f428b45c066bd6d656, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7781925441254113838, guid: bc17f1a12448d8f428b45c066bd6d656, type: 3}
       propertyPath: m_Name
       value: ButtonMechanic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781925441254113838, guid: bc17f1a12448d8f428b45c066bd6d656, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
