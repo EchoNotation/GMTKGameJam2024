@@ -10,6 +10,7 @@ TagManager:
   - Constructed
   - GameManager
   - DeathEdge
+  - Wiring
   layers:
   - Default
   - TransparentFX

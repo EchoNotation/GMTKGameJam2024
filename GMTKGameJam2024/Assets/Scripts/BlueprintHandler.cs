@@ -23,6 +23,7 @@ public class BlueprintHandler : MonoBehaviour
     public Camera mainCam;
     public GameObject[] sizeButtons = new GameObject[3];
     public Button[] blueprintButtons = new Button[5];
+    public Image[] childImages = new Image[5];
     public Blueprint[] blueprintDictionary = new Blueprint[totalBlueprints];
     public TMP_Text materialsText;
 
@@ -37,13 +38,14 @@ public class BlueprintHandler : MonoBehaviour
         {
             blueprintButtons[i].enabled = false;
             blueprintButtons[i].GetComponent<Image>().enabled = false;
+            childImages[i].enabled = false;
         }
 
-        UnlockBlueprint(0);
-        UnlockBlueprint(1);
-        UnlockBlueprint(2);
-        UnlockBlueprint(3);
-        UnlockBlueprint(4);
+        //UnlockBlueprint(0);
+        //UnlockBlueprint(1);
+        //UnlockBlueprint(2);
+        //UnlockBlueprint(3);
+        //UnlockBlueprint(4);
 
         SetCurrentSize(0);
         UpdateMaterialsCount();
@@ -67,6 +69,7 @@ public class BlueprintHandler : MonoBehaviour
         blueprints.Add(blueprintDictionary[id]);
         blueprintButtons[id].enabled = true;
         blueprintButtons[id].GetComponent<Image>().enabled = true;
+        childImages[id].enabled = true;
     }
 
     private int[] costs = { 1, 5, 10 };

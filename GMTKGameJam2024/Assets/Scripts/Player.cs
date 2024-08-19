@@ -269,5 +269,9 @@ public class Player : MonoBehaviour
             UnityEngine.Debug.Log($"mass {incoming.mass} vel {resultantVel.magnitude} force {force}");
             if(Mathf.Abs(force) >= lethalForce) Die();
         }
+        else if(collision.collider.CompareTag("Wiring"))
+        {
+            Die();
+        }
     }
 }
