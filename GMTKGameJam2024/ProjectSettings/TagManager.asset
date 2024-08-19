@@ -11,6 +11,7 @@ TagManager:
   - GameManager
   - DeathEdge
   - Wiring
+  - Button
   layers:
   - Default
   - TransparentFX

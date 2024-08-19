@@ -271,7 +271,7 @@ public class Player : MonoBehaviour
         }
         else if(collision.collider.CompareTag("Wiring"))
         {
-            Die();
+            if(collision.collider.GetComponent<Wiring>().IsActivated()) Die();
         }
     }
 }
