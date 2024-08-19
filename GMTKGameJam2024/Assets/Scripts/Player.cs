@@ -263,7 +263,7 @@ public class Player : MonoBehaviour
             if((incomingVel - playerVel).magnitude < irrelevantSpeedThreshold) return;
 
 
-            Vector2 resultantVel = (playerVel / 4) - incomingVel;
+            Vector2 resultantVel = (playerVel / 6) - incomingVel;
             float force = incoming.mass * resultantVel.magnitude;
 
             UnityEngine.Debug.Log($"mass {incoming.mass} vel {resultantVel.magnitude} force {force}");
