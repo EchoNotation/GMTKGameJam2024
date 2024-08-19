@@ -13,7 +13,7 @@ public class BlueprintHandler : MonoBehaviour
 {
     // Start is called before the first frame update
     private int currentSize = 0;
-    private List<Blueprint> blueprints;
+    private Blueprint[] blueprints;
     private int materialsCount = 50;
 
     private List<GameObject> objectsBuilt;
@@ -32,7 +32,7 @@ public class BlueprintHandler : MonoBehaviour
     void Start()
     {
         objectsBuilt = new List<GameObject>();
-        blueprints = new List<Blueprint>();
+        blueprints = new Blueprint[totalBlueprints];
 
         for(int i = 0; i < totalBlueprints; i++)
         {
@@ -66,7 +66,7 @@ public class BlueprintHandler : MonoBehaviour
 
     public void UnlockBlueprint(int id)
     {
-        blueprints.Add(blueprintDictionary[id]);
+        blueprints[id] = blueprintDictionary[id];
         blueprintButtons[id].enabled = true;
         blueprintButtons[id].GetComponent<Image>().enabled = true;
         childImages[id].enabled = true;
@@ -79,7 +79,7 @@ public class BlueprintHandler : MonoBehaviour
     {
         if(!allowedToOpen) return;
 
-        if(position >= blueprints.Count) return;
+        if(blueprints[position] == null) return;
 
         if(costs[currentSize] > materialsCount) return;
 

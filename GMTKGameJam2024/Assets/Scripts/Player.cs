@@ -266,7 +266,7 @@ public class Player : MonoBehaviour
             Vector2 resultantVel = (playerVel / 6) - incomingVel;
             float force = incoming.mass * resultantVel.magnitude;
 
-            UnityEngine.Debug.Log($"mass {incoming.mass} vel {resultantVel.magnitude} force {force}");
+            //UnityEngine.Debug.Log($"mass {incoming.mass} vel {resultantVel.magnitude} force {force}");
             if(Mathf.Abs(force) >= lethalForce) Die();
         }
         else if(collision.collider.CompareTag("Wiring"))
