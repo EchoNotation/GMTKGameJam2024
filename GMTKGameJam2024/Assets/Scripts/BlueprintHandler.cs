@@ -41,11 +41,11 @@ public class BlueprintHandler : MonoBehaviour
             childImages[i].enabled = false;
         }
 
-        //UnlockBlueprint(0);
-        //UnlockBlueprint(1);
-        //UnlockBlueprint(2);
-        //UnlockBlueprint(3);
-        //UnlockBlueprint(4);
+        UnlockBlueprint(0);
+        UnlockBlueprint(1);
+        UnlockBlueprint(2);
+        UnlockBlueprint(3);
+        UnlockBlueprint(4);
 
         SetCurrentSize(0);
         UpdateMaterialsCount();
