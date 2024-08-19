@@ -6,7 +6,7 @@ public class RespawnController : MonoBehaviour
 {
     public GameObject playerPrefab;
     private GameObject activeCheckpoint = null;
-    private int respawnMaterialCount = 30;
+    private int respawnMaterialCount = 50;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +46,7 @@ public class RespawnController : MonoBehaviour
         }
 
         GetComponent<BlueprintHandler>().SetMaterials(respawnMaterialCount);
+        GetComponent<BlueprintHandler>().allowedToOpen = true;
         GetComponent<CameraController>().player = player;
     }
 }

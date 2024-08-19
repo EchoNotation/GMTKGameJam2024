@@ -52,6 +52,7 @@ public class Placeable : MonoBehaviour
                 Destroy(gameObject);
                 blueprintHandler.GetComponent<BlueprintHandler>().allowedToOpen = true;
                 blueprintHandler.GetComponent<BlueprintHandler>().AddMaterials(cost);
+                blueprintHandler.GetComponent<BlueprintHandler>().RemovedObject(gameObject);
             }
 
         }
@@ -110,6 +111,7 @@ public class Placeable : MonoBehaviour
     {
         if(tracking) return;
         blueprintHandler.GetComponent<BlueprintHandler>().AddMaterials(cost);
+        blueprintHandler.GetComponent<BlueprintHandler>().RemovedObject(gameObject);
         Destroy(gameObject);
     }
 }

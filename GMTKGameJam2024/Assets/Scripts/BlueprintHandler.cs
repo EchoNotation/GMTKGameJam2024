@@ -89,6 +89,7 @@ public class BlueprintHandler : MonoBehaviour
         materialsCount -= costs[currentSize];
         UpdateMaterialsCount();
         allowedToOpen = false;
+        BuiltObject(temp);
     }
 
     public void SetMaterials(int amount)
@@ -111,6 +112,11 @@ public class BlueprintHandler : MonoBehaviour
     public void BuiltObject(GameObject obj)
     {
         objectsBuilt.Add(obj);
+    }
+
+    public void RemovedObject(GameObject obj)
+    {
+        objectsBuilt.Remove(obj);
     }
 
     public GameObject[] GetBuiltObjects()
