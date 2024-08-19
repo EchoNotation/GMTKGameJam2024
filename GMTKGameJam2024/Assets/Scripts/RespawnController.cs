@@ -45,6 +45,9 @@ public class RespawnController : MonoBehaviour
             Destroy(builtObjs[i]);
         }
 
+        ButtonMechanic[] buttons = GameObject.FindObjectsOfType<ButtonMechanic>();
+        for(int i = 0; i < buttons.Length; i++) buttons[i].ResetButton();
+
         GetComponent<BlueprintHandler>().SetMaterials(respawnMaterialCount);
         GetComponent<BlueprintHandler>().allowedToOpen = true;
         GetComponent<CameraController>().player = player;

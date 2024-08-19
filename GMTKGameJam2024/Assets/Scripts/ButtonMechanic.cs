@@ -21,7 +21,11 @@ public class ButtonMechanic : MonoBehaviour
         
     }
 
-
+    public void ResetButton()
+    {
+        activated = false;
+        sr.sprite = sprites[0];
+    }
 
     public bool IsActivated()
     {
