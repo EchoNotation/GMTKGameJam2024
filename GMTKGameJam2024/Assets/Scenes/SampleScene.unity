@@ -2261,7 +2261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1230928757
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4190,6 +4190,10 @@ PrefabInstance:
       propertyPath: deathEdge
       value: 
       objectReference: {fileID: 1899851895}
+    - target: {fileID: 971138586253089223, guid: c95715a17aa9c2f40ac01e74c9d15710, type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 1230928756}
     - target: {fileID: 971138586253089223, guid: c95715a17aa9c2f40ac01e74c9d15710, type: 3}
       propertyPath: mainCam
       value: 

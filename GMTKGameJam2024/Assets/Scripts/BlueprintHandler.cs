@@ -26,6 +26,7 @@ public class BlueprintHandler : MonoBehaviour
     public Image[] childImages = new Image[5];
     public Blueprint[] blueprintDictionary = new Blueprint[totalBlueprints];
     public TMP_Text materialsText;
+    public GameObject panel;
 
     public bool allowedToOpen = true;
 
@@ -41,11 +42,11 @@ public class BlueprintHandler : MonoBehaviour
             childImages[i].enabled = false;
         }
 
-        UnlockBlueprint(0);
+        /*UnlockBlueprint(0);
         UnlockBlueprint(1);
         UnlockBlueprint(2);
         UnlockBlueprint(3);
-        UnlockBlueprint(4);
+        UnlockBlueprint(4);*/
 
         SetCurrentSize(0);
         UpdateMaterialsCount();
@@ -66,6 +67,7 @@ public class BlueprintHandler : MonoBehaviour
 
     public void UnlockBlueprint(int id)
     {
+        panel.SetActive(true);
         blueprints[id] = blueprintDictionary[id];
         blueprintButtons[id].enabled = true;
         blueprintButtons[id].GetComponent<Image>().enabled = true;
