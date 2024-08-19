@@ -53,7 +53,8 @@ public class Player : MonoBehaviour
     {
         if(rb.velocity.y <= 0)
         {
-            RaycastHit2D hit = Physics2D.BoxCast(transform.position, box, 0, Vector2.down, 0.05f);
+            int layerMask = LayerMask.GetMask("Default");
+            RaycastHit2D hit = Physics2D.BoxCast(transform.position, box, 0, Vector2.down, 0.05f, layerMask);
 
             if(hit.collider != null)
             {
