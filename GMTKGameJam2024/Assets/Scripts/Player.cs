@@ -16,13 +16,26 @@ public class Player : MonoBehaviour
         WALK1,
         WALK2,
         PRE_JUMP,
-        PRE_BLINK
+        PRE_BLINK,
+        SHOCKED1,
+        SHOCKED2,
+        HAT
     }
 
     public AnimationState animState;
     bool facingLeft;
     Stopwatch timer;
     public long nextSwitch;
+
+    public enum DeathType
+    {
+        FALLING,
+        CRUSHED,
+        ELECTROCUTED
+    }
+
+    public DeathType deathType;
+    bool inDeathAnim = false;
 
     Rigidbody2D rb;
     private Camera cam;
@@ -66,7 +79,8 @@ public class Player : MonoBehaviour
 
         if(active) CheckInputs();
 
-        UpdateAnimationState();
+        if(inDeathAnim) UpdateAnimationStateDead();
+        else UpdateAnimationStateNormal();
         UpdateSprite();
     }
 
@@ -106,7 +120,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void UpdateAnimationState()
+    private void UpdateAnimationStateNormal()
     {
         bool pressingLeft = Input.GetKey(KeyCode.A);
         bool pressingRight = Input.GetKey(KeyCode.D);
@@ -207,6 +221,52 @@ public class Player : MonoBehaviour
 
     }
 
+    private void UpdateAnimationStateDead()
+    {
+        if(animState == AnimationState.HAT)
+        {
+            if(timer.ElapsedMilliseconds > nextSwitch)
+            {
+                Die();
+                animState = AnimationState.STAND;
+            } 
+            return;
+        }
+
+        if(deathType == DeathType.CRUSHED)
+        {
+            animState = AnimationState.HAT;
+            nextSwitch = 1500;
+            timer.Restart();
+        }
+        else if(deathType == DeathType.ELECTROCUTED)
+        {
+            if(timer.ElapsedMilliseconds > nextSwitch)
+            {
+                animState = AnimationState.HAT;
+                nextSwitch = 1500;
+                timer.Restart();
+            }
+            else
+            {
+                if(timer.ElapsedMilliseconds % 250 > 125)
+                {
+                    animState = AnimationState.SHOCKED1;
+                }
+                else
+                {
+                    animState = AnimationState.SHOCKED2;
+                }
+            }
+        }
+        else if(deathType == DeathType.FALLING)
+        {
+            animState = AnimationState.HAT;
+            nextSwitch = 1500;
+            timer.Restart();
+        }
+    }
+
     private void UpdateSprite()
     {
         int spriteIndex = 0;
@@ -229,9 +289,18 @@ public class Player : MonoBehaviour
             case AnimationState.PRE_JUMP:
                 spriteIndex = 4;
                 break;
+            case AnimationState.HAT:
+                spriteIndex = 5;
+                break;
+            case AnimationState.SHOCKED1:
+                spriteIndex = 6;
+                break;
+            case AnimationState.SHOCKED2:
+                spriteIndex = 7;
+                break;
         }
 
-        GetComponent<SpriteRenderer>().sprite = sprites[facingLeft ? spriteIndex : spriteIndex + 5];
+        GetComponent<SpriteRenderer>().sprite = sprites[facingLeft ? spriteIndex : spriteIndex + 8];
     }
 
     public void DisableActions()
@@ -246,6 +315,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        inDeathAnim = false;
         GameObject.FindGameObjectWithTag("GameManager").GetComponent<CameraController>().PlayerDied();
         Destroy(gameObject);
     }
@@ -255,6 +325,8 @@ public class Player : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        if(inDeathAnim) return;
+
         if(collision.collider.CompareTag("Constructed"))
         {
             Rigidbody2D incoming = collision.collider.GetComponent<Rigidbody2D>();
@@ -268,11 +340,38 @@ public class Player : MonoBehaviour
             float force = incoming.mass * resultantVel.magnitude;
 
             //UnityEngine.Debug.Log($"mass {incoming.mass} vel {resultantVel.magnitude} force {force}");
-            if(Mathf.Abs(force) >= lethalForce) Die();
+            if(Mathf.Abs(force) >= lethalForce)
+            {
+                deathType = DeathType.CRUSHED;
+                nextSwitch = 0;
+                timer.Restart();
+                EnterDeathAnim();
+            }
         }
         else if(collision.collider.CompareTag("Wiring"))
         {
-            if(collision.collider.GetComponent<Wiring>().IsActivated()) Die();
+            if(collision.collider.GetComponent<Wiring>().IsActivated())
+            {
+                deathType = DeathType.ELECTROCUTED;
+                nextSwitch = 1000;
+                timer.Restart();
+                EnterDeathAnim();
+            }
         }
+    }
+
+    private void EnterDeathAnim()
+    {
+        inDeathAnim = true;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        GetComponent<Collider2D>().enabled = false;
+    }
+
+    public void DeathByFalling()
+    {
+        deathType = DeathType.FALLING;
+        nextSwitch = 0;
+        timer.Restart();
+        EnterDeathAnim();
     }
 }

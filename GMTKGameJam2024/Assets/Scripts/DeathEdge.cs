@@ -9,7 +9,7 @@ public class DeathEdge : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            collision.GetComponent<Player>().Die();
+            collision.GetComponent<Player>().DeathByFalling();
         }
         else if(collision.CompareTag("Constructed"))
         {

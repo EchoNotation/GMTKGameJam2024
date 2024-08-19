@@ -106,18 +106,24 @@ MonoBehaviour:
   - {fileID: 168597036, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
   - {fileID: -1540768667, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
   - {fileID: -602979382, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  - {fileID: -1766064005, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  - {fileID: 21300000, guid: 8c48685975995314eb7da78604986761, type: 3}
+  - {fileID: 21300000, guid: 2faab6e5b635c0d4a8155bf0d47d6948, type: 3}
   - {fileID: 721773250, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
   - {fileID: 1261014462, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
   - {fileID: 2054123852, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
   - {fileID: -918192248, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
   - {fileID: -1215038892, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  - {fileID: 82486482, guid: 30561a89280d8cd47bc6aadffef6b1d5, type: 3}
+  - {fileID: 21300000, guid: 72adaece7288ae048884581c587e8ea5, type: 3}
+  - {fileID: 21300000, guid: 147122b4797263247a672200adf01d4b, type: 3}
   animState: 0
   nextSwitch: 0
+  deathType: 0
   walkForce: 1.5
   jumpForce: 15
   jumpDistance: 0.05
   maxSpeed: 6
-  lethalForce: 35
 --- !u!114 &-4266332604182405811
 MonoBehaviour:
   m_ObjectHideFlags: 0
