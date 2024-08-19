@@ -10,12 +10,14 @@ public class Placeable : MonoBehaviour
     private int cost = 0;
 
     public GameObject blueprintHandler;
+    public Sound sound;
 
     // Start is called before the first frame update
     void Start()
     {
         camera = GameObject.FindAnyObjectByType<Camera>();
         blueprintHandler = GameObject.FindGameObjectWithTag("GameManager");
+        sound = GameObject.Find("SoundManager").GetComponent<Sound>();
 
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().simulated = false;
@@ -75,11 +77,12 @@ public class Placeable : MonoBehaviour
             tracking = false;
             blueprintHandler.GetComponent<BlueprintHandler>().allowedToOpen = true;
             blueprintHandler.GetComponent<BlueprintHandler>().BuiltObject(gameObject);
-
+            sound.PlaySound(Sound.Sounds.CONSTRUCT);
         }
         else
         {
             GetComponent<Collider2D>().enabled = false;
+            sound.PlaySound(Sound.Sounds.ERROR);
         }
     }
 

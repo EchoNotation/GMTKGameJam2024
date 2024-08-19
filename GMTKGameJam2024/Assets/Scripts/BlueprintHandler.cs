@@ -30,8 +30,12 @@ public class BlueprintHandler : MonoBehaviour
 
     public bool allowedToOpen = true;
 
+    private Sound sound;
+
     void Start()
     {
+        sound = GameObject.Find("SoundManager").GetComponent<Sound>();
+
         objectsBuilt = new List<GameObject>();
         blueprints = new Blueprint[totalBlueprints];
 
@@ -83,7 +87,11 @@ public class BlueprintHandler : MonoBehaviour
 
         if(blueprints[position] == null) return;
 
-        if(costs[currentSize] > materialsCount) return;
+        if(costs[currentSize] > materialsCount)
+        {
+            sound.PlaySound(Sound.Sounds.ERROR);
+            return;
+        }
 
         GameObject temp = Instantiate(blueprints[position].prefab);
         temp.GetComponent<Placeable>().RecieveCamera(mainCam);
@@ -92,6 +100,8 @@ public class BlueprintHandler : MonoBehaviour
         UpdateMaterialsCount();
         allowedToOpen = false;
         BuiltObject(temp);
+
+        sound.PlaySound(Sound.Sounds.BLUEPRINT_OPEN);
     }
 
     public void SetMaterials(int amount)

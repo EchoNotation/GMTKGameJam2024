@@ -5,11 +5,12 @@ using UnityEngine;
 public class BlueprintPickup : MonoBehaviour
 {
     public int blueprintID;
+    private Sound sound;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        sound = GameObject.Find("SoundManager").GetComponent<Sound>();
     }
 
     // Update is called once per frame
@@ -23,6 +24,7 @@ public class BlueprintPickup : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             GameObject.Find("GameManager").GetComponent<BlueprintHandler>().UnlockBlueprint(blueprintID);
+            sound.PlaySound(Sound.Sounds.PICKUP);
             Destroy(gameObject);
         }
     }

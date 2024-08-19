@@ -7,10 +7,13 @@ public class Checkpoint : MonoBehaviour
     bool activated;
     public int minCameraY = 0;
 
+    private Sound sound;
+
     // Start is called before the first frame update
     void Start()
     {
         activated = false;
+        sound = GameObject.Find("SoundManager").GetComponent<Sound>();
     }
 
     // Update is called once per frame
@@ -29,6 +32,8 @@ public class Checkpoint : MonoBehaviour
             GameObject gm = GameObject.FindGameObjectWithTag("GameManager");
             gm.GetComponent<CameraController>().HitCheckpoint(minCameraY);
             gm.GetComponent<RespawnController>().SetActiveCheckpoint(gameObject);
+
+            sound.PlaySound(Sound.Sounds.DRINK);
         }
     }
 }

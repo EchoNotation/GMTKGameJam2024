@@ -7,12 +7,15 @@ public class ButtonMechanic : MonoBehaviour
     public Sprite[] sprites;
     private SpriteRenderer sr;
     private bool activated = false;
+    private Sound sound;
 
     // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = sprites[0];
+
+        sound = GameObject.Find("SoundManager").GetComponent<Sound>();
     }
 
     // Update is called once per frame
@@ -38,6 +41,7 @@ public class ButtonMechanic : MonoBehaviour
         {
             activated = true;
             sr.sprite = sprites[1];
+            sound.PlaySound(Sound.Sounds.BUTTON);
         }
     }
 }

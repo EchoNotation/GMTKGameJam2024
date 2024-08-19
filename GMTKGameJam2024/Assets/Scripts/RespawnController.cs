@@ -8,10 +8,12 @@ public class RespawnController : MonoBehaviour
     private GameObject activeCheckpoint = null;
     private int respawnMaterialCount = 50;
 
+    private Sound sound;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        sound = GameObject.Find("SoundManager").GetComponent<Sound>();
     }
 
     // Update is called once per frame
@@ -51,5 +53,7 @@ public class RespawnController : MonoBehaviour
         GetComponent<BlueprintHandler>().SetMaterials(respawnMaterialCount);
         GetComponent<BlueprintHandler>().allowedToOpen = true;
         GetComponent<CameraController>().player = player;
+
+        sound.PlaySound(Sound.Sounds.POP);
     }
 }

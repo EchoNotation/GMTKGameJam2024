@@ -47,9 +47,14 @@ public class Player : MonoBehaviour
     public float jumpDistance = 0.05f;
     public float maxSpeed = 6f;
 
+    private Sound sound;
+    bool justGrounded = true;
+
     // Start is called before the first frame update
     void Start()
     {
+        sound = GameObject.Find("SoundManager").GetComponent<Sound>();
+
         cam = GameObject.Find("Camera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
         active = true;
@@ -76,6 +81,9 @@ public class Player : MonoBehaviour
             } 
             else grounded = false;
         }
+
+        if(grounded && !justGrounded) sound.PlaySound(Sound.Sounds.LAND);
+        justGrounded = grounded;
 
         if(active) CheckInputs();
 
@@ -106,6 +114,8 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             grounded = false;
+
+            sound.PlaySound(Sound.Sounds.JUMP);
         }
 
         if(Input.GetMouseButtonDown(1))
@@ -115,7 +125,11 @@ public class Player : MonoBehaviour
             if(hit.collider != null)
             {
                 Placeable p = hit.collider.gameObject.GetComponent<Placeable>();
-                if(p != null) p.BreakDown();
+                if(p != null)
+                {
+                    p.BreakDown();
+                    sound.PlaySound(Sound.Sounds.DESTRUCT);
+                }
             }
         }
     }
@@ -346,6 +360,7 @@ public class Player : MonoBehaviour
                 nextSwitch = 0;
                 timer.Restart();
                 EnterDeathAnim();
+                sound.PlaySound(Sound.Sounds.SPLAT);
             }
         }
         else if(collision.collider.CompareTag("Wiring"))
@@ -353,9 +368,10 @@ public class Player : MonoBehaviour
             if(collision.collider.GetComponent<Wiring>().IsActivated())
             {
                 deathType = DeathType.ELECTROCUTED;
-                nextSwitch = 1000;
+                nextSwitch = 700;
                 timer.Restart();
                 EnterDeathAnim();
+                sound.PlaySound(Sound.Sounds.SHOCK);
             }
         }
     }
@@ -373,5 +389,6 @@ public class Player : MonoBehaviour
         nextSwitch = 0;
         timer.Restart();
         EnterDeathAnim();
+        sound.PlaySound(Sound.Sounds.FALL);
     }
 }
