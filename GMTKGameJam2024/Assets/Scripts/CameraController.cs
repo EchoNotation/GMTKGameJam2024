@@ -36,10 +36,10 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         mode = CamMode.NORMAL;
-        mainCam.transform.position = new Vector3(0, cameraY, -10);
+        mainCam.transform.position = new Vector3(2.5f, cameraY, -10);
         minCameraY = cameraY;
         cameraHeight = mainCam.orthographicSize;
-        deathEdge.transform.position = new Vector3(0, minCameraY - (cameraHeight + deathDistance), 0);
+        deathEdge.transform.position = new Vector3(2.5f, minCameraY - (cameraHeight + deathDistance), 0);
 
         allGirders = new List<GameObject>();
         GameObject[] girderArr = GameObject.FindGameObjectsWithTag("Girder");
@@ -92,7 +92,7 @@ public class CameraController : MonoBehaviour
             }
         }
 
-        mainCam.transform.position = new Vector3(0, cameraY, -10);
+        mainCam.transform.position = new Vector3(2.5f, cameraY, -10);
     }
 
     public void HitCheckpoint(int newMinCameraY)
