@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     bool grounded = false;
     Vector2 box;
     bool active;
-    public float walkForce = 1.5f;
+    public float walkForce = 40f;
     public float jumpForce = 25f;
     public float jumpDistance = 0.05f;
     public float maxSpeed = 6f;
@@ -102,11 +102,11 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.A) && rb.velocity.x > -maxSpeed)
         {
-            rb.AddForce(new Vector2(-walkForce, 0));
+            rb.AddForce(new Vector2(-walkForce, 0) * Time.deltaTime, ForceMode2D.Impulse);
         }
         else if(Input.GetKey(KeyCode.D) && rb.velocity.x < maxSpeed)
         {
-            rb.AddForce(new Vector2(walkForce, 0));
+            rb.AddForce(new Vector2(walkForce, 0) * Time.deltaTime, ForceMode2D.Impulse);
         }
 
         if(Input.GetKey(KeyCode.Space) && grounded)
@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
             sound.PlaySound(Sound.Sounds.JUMP);
         }
 
-        if(Input.GetMouseButtonDown(1))
+        if(Input.GetMouseButton(1))
         {
             Vector3 mouseLocation = cam.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mouseLocation, new Vector2());

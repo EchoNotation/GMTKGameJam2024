@@ -120,7 +120,7 @@ MonoBehaviour:
   animState: 0
   nextSwitch: 0
   deathType: 0
-  walkForce: 1.5
+  walkForce: 40
   jumpForce: 15
   jumpDistance: 0.05
   maxSpeed: 6
